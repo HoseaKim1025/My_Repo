@@ -4,34 +4,16 @@ b = int(b_in)
 # print(n_list, b)
 sum_n = 0
 for i in range(len(n_list)):
-    if n_list[i].isdecimal:
-        # print(n_list[i])
+    if n_list[i].isdecimal():
         n_list[i] = int(n_list[i])
-        print(n_list[i])
-    elif n_list[i].isalpha:
-        # print(n_list[i], ord(n_list[i]))
+    elif n_list[i].isalpha():
         n_list[i] = ord(n_list[i]) - 55
-        print(n_list[i])
-    sum_n += n_list[i] * b**(len(n_list) - i)
-    # print(sum_n)
+    sum_n += n_list[i] * b**(len(n_list)-1 - i)
 print(sum_n)
-# sum_n = 0
-# for i in range(len(n_list)-1, -1, -1):
-#     sum_n += n_list[i] * b**
-# print(sum_n)
 
-
-
-# print(n)
-# for i in range(len(n)):
-#     if n[i].isalpha:
-#         n[i] = ord(n[i]) - 55
-# real_n = sum(n)
-# print(real_n)
-
-
-
-
+# 문제 잘 못 읽고 10진수를 b진수로 바꾸는 코드를 짜버렸는데 지우기 아까워서 남김
+# n = int(input())
+# b = int(input())
 # result = ''
 # while True:
 #     if n < b*2:
