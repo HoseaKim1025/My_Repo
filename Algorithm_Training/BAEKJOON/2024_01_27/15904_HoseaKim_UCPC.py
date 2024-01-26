@@ -9,7 +9,8 @@ if 'UCPC' in old_str:
         print('I love UCPC')
 else:
     pre = 0
-    for j in old_str:
+    index_1st_u = old_str.index('U')
+    for j in old_str[index_1st_u:]:
         if pre == 0 and j == 'U':
             new_str += j
             pre = j
