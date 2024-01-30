@@ -1,7 +1,7 @@
 # import sys
 # sys.stdin = open('input_view.txt', 'r')
 
-T = 1
+T = 10
 for case in range(1, T+1):
     n = int(input())
     buildings = list(map(int, input().split()))
