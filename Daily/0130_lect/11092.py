@@ -17,4 +17,3 @@ for case in range(1, T+1):
     Max = max_index(n, num_list)
     Min = min_index(n, num_list)
     print(f'#{case} {abs(Max - Min)}')
-    
