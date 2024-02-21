@@ -1,23 +1,29 @@
 # 트리의 부모 찾기
-def preorder_traversal(i):
+import sys
+sys.setrecursionlimit(1000000)
+input = sys.stdin.readline
 
-    for j in range(len(tree_dict[i])):
-        if not(tree_dict[i][j] == 1 or par[tree_dict[i][j]]):
-            par[tree_dict[i][j]] = i
-            preorder_traversal(tree_dict[i][j])
+
+def dfs(i):
+    for j in connect_dict[i]:
+        if not par[j]:
+            par[j] = i
+            if len(connect_dict[j]) > 1:
+                dfs(j)
 
 
 N = int(input())
-info_list = [list(map(int, input().split())) for _ in range(N-1)]
 
 k = list(range(1, N+1))
 v = [[] for _ in range(N)]
-tree_dict = dict(zip(k, v))
-for i in range(N-1):
-    tree_dict[info_list[i][0]].append(info_list[i][1])
-    tree_dict[info_list[i][1]].append(info_list[i][0])
+connect_dict = dict(zip(k, v))
+
+for _ in range(N-1):
+    node1, node2 = map(int, input().split())
+    connect_dict[node1].append(node2)
+    connect_dict[node2].append(node1)
 
 par = [0] * (N+1)
-preorder_traversal(1)
+dfs(1)
 
 print(*par[2:], sep='\n')

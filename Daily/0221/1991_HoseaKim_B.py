@@ -10,18 +10,18 @@ def preorder_traversal(i):
 
 def inorder_traversal(i):
     if i in p and L[i]:
-        preorder_traversal(L[i])
+        inorder_traversal(L[i])
     ans = chr(i + 64)
     print(ans, end='')
     if i in p and R[i]:
-        preorder_traversal(R[i])
+        inorder_traversal(R[i])
 
 
 def postorder_traversal(i):
     if i in p and L[i]:
-        preorder_traversal(L[i])
+        postorder_traversal(L[i])
     if i in p and R[i]:
-        preorder_traversal(R[i])
+        postorder_traversal(R[i])
     ans = chr(i + 64)
     print(ans, end='')
 
