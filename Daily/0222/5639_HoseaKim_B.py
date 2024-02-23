@@ -38,3 +38,4 @@ tree = [0] * 10001
 tree[1] = node_list[0]
 rear = 1
 binary_search_tree(1, 0)
+print(tree[:14])
