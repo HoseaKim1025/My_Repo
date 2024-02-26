@@ -7,6 +7,8 @@ sys.stdout = open('output.txt', 'w')
 def wiring(i, ss, cnt):
     global max_connection
     global min_len
+    if len(core_list) - i < max_connection - cnt:
+        return
     if i == len(core_list):
         if max_connection < cnt:
             max_connection = cnt
