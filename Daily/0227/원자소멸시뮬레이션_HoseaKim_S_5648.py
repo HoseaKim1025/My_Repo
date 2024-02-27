@@ -16,7 +16,6 @@ for case in range(1, T+1):
     dy = [0, 0, -1, 1]
 
     min_pos = [[[], 5000] for _ in range(n)]
-    print(min_pos)
     for i in range(n):
         min_distance = 5000
         for j in range(n):
@@ -30,7 +29,7 @@ for case in range(1, T+1):
                     ):
                         if min_distance > abs(x[i] - x[j]) + abs(y[i] - y[j]):
                             min_distance = abs(x[i] - x[j]) + abs(y[i] - y[j])
-                            min_pos[i] = [[j], min_distance]
+                            min_pos[i] = [[j], min_distance, k[i], i]
                         elif min_distance == abs(x[i] - x[j]) + abs(y[i] - y[j]):
                             min_pos[i][0].append(j)
             elif d[i] == 1:
@@ -41,7 +40,7 @@ for case in range(1, T+1):
                     ):
                         if min_distance > abs(x[i] - x[j]) + abs(y[i] - y[j]):
                             min_distance = abs(x[i] - x[j]) + abs(y[i] - y[j])
-                            min_pos[i] = [[j], min_distance]
+                            min_pos[i] = [[j], min_distance, k[i], i]
                         elif min_distance == abs(x[i] - x[j]) + abs(y[i] - y[j]):
                             min_pos[i][0].append(j)
             elif d[i] == 2:
@@ -52,7 +51,7 @@ for case in range(1, T+1):
                     ):
                         if min_distance > abs(x[i] - x[j]) + abs(y[i] - y[j]):
                             min_distance = abs(x[i] - x[j]) + abs(y[i] - y[j])
-                            min_pos[i] = [[j], min_distance]
+                            min_pos[i] = [[j], min_distance, k[i], i]
                         elif min_distance == abs(x[i] - x[j]) + abs(y[i] - y[j]):
                             min_pos[i][0].append(j)
             elif d[i] == 3:
@@ -63,22 +62,21 @@ for case in range(1, T+1):
                     ):
                         if min_distance > abs(x[i] - x[j]) + abs(y[i] - y[j]):
                             min_distance = abs(x[i] - x[j]) + abs(y[i] - y[j])
-                            min_pos[i] = [[j], min_distance]
+                            min_pos[i] = [[j], min_distance, k[i], i]
                         elif min_distance == abs(x[i] - x[j]) + abs(y[i] - y[j]):
                             min_pos[i][0].append(j)
-
+    print(min_pos)
     min_pos.sort(key=lambda f: f[1])
     emitted = 0
     print(min_pos)
-    for i in range(len(min_pos)):
-        if min_pos[i] and min_pos[i][0]:
-            emitted += k[i]
-            for j in min_pos[i][0]:
-                if min_pos[j] and min_pos[j][0]:
-                    emitted += k[j]
-                    min_pos[j] = 0
-            min_pos[i] = 0
-
-    print(min_pos)
+    for pos in min_pos:
+        if pos and pos[0]:
+            emitted += pos[2]
+            for j in pos[0]:
+                if pos and pos[0]:
+                    emitted += pos[2]
+                    pos = 0
+            pos = 0
+        print(min_pos, emitted)
 
     print(f'#{case}', emitted)
