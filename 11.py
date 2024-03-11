@@ -8,3 +8,5 @@ g = generator()
 
 for _ in range(3):
     print(next(g))
+
+# dd
